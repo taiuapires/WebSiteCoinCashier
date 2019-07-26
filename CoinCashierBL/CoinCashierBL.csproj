@@ -7,7 +7,7 @@
     <ProjectGuid>{09A909B2-3385-471B-A7AA-4AA3B3E60F33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebSiteCoinCashierBL</RootNamespace>
+    <RootNamespace>CoinCashierBL</RootNamespace>
     <AssemblyName>WebSiteCoinCashierBL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,16 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BalanceBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CoinCashierDAL\CoinCashierDAL.csproj">
+      <Project>{8eae4423-6c41-4379-9a92-32a2b620684f}</Project>
+      <Name>CoinCashierDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommonClasses\CommonClasses.csproj">
       <Project>{93625ace-5e44-48a1-9315-2a097e9c37e0}</Project>
       <Name>CommonClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebSiteCoinCashierDAL\CoinCashierDAL.csproj">
-      <Project>{8eae4423-6c41-4379-9a92-32a2b620684f}</Project>
-      <Name>CoinCashierDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

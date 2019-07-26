@@ -8,8 +8,26 @@ namespace WebApplication1.Controllers
 {
     public class CashierController : Controller
     {
-        // GET: Cashier
-        public ActionResult Index()
+        public ActionResult Deposit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult AddCoins()
+        {
+            return Json(new
+            {
+                data = "Hello World"
+            });
+        }
+
+        public ActionResult Exchange()
+        {
+            return View();
+        }
+
+        public ActionResult Withdraw()
         {
             return View();
         }
