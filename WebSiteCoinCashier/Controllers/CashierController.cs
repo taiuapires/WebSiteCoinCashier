@@ -80,10 +80,34 @@ namespace WebApplication1.Controllers
             }
         }
 
-        public ActionResult ExchangeResult(ExchangeResultDTO exchangeResult)
+        public ActionResult ExchangeResult(int totalChange)
         {
-            return View(exchangeResult);
+            CashierDTO cashier = CoinCashierBL.BalanceBL.LoadBalance(1);
+
+            try
+            {
+                List<CoinChangeDTO> coinChanges = CoinCashierBL.ExchangeBL.PerformSale(cashier, totalChange);
+
+                return View(new ExchangeResultDTO()
+                {
+                    exchangeSuccessful = true,
+                    resultChange = coinChanges,
+                    cashier = cashier
+                });
+            }
+            catch (CannotProcessExchange)
+            {
+                return View(new ExchangeResultDTO()
+                {
+                    exchangeSuccessful = false
+                });
+            }
         }
+
+        //public ActionResult ExchangeResult(ExchangeResultDTO exchangeResult)
+        //{
+        //    return View(exchangeResult);
+        //}
 
         public ActionResult Withdraw()
         {

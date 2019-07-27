@@ -8,6 +8,8 @@ namespace CommonClasses.DTO
 {
     public class ExchangeResultDTO
     {
+        public bool exchangeSuccessful { get; set; }
+
         public CashierDTO cashier { get; set; }
 
         public List<CoinChangeDTO> resultChange { get; set; }

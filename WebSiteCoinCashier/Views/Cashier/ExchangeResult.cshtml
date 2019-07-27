@@ -9,58 +9,69 @@
 <div>
     <h2>ExchangeResult</h2>
 
-    <div class="row">
-        <table id="gridTableBalanceResult" class="table gridview" border="1">
-            <tr>
-                <th>
-                    Coin Value
-                </th>
-                <th>
-                    Quantity
-                </th>
-                <th>
-                    Total Coin Value
-                </th>
-            </tr>
-            @foreach (CoinBalanceDTO coinBalance in Model.cashier.coinBalanceDTOs)
-            {
+    @if (Model.exchangeSuccessful)
+    {
+        <h4>New Balance</h4>
+        <div class="row">
+            <table id="gridTableBalanceResult" class="table gridview" border="1">
                 <tr>
-                    <td>@coinBalance.coinValue</td>
-                    <td>@coinBalance.quantity</td>
-                    <td>@coinBalance.totalValue</td>
+                    <th>
+                        Coin Value
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total Coin Value
+                    </th>
                 </tr>
-            }
-        </table>
-    </div>
-    <div class="row">
-        <label>Total Sum: @Model.cashier.totalCoinValueSum</label>
-    </div>
+                @foreach (CoinBalanceDTO coinBalance in Model.cashier.coinBalanceDTOs)
+                {
+                    <tr>
+                        <td>@coinBalance.coinValue</td>
+                        <td>@coinBalance.quantity</td>
+                        <td>@coinBalance.totalValue</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <label>Total Sum: @Model.cashier.totalCoinValueSum</label>
+        </div>
 
-    <div class="row">
-        <table id="gridTableBalanceResult" class="table gridview" border="1">
-            <tr>
-                <th>
-                    Coin Value
-                </th>
-                <th>
-                    Quantity
-                </th>
-                <th>
-                    Total Coin Value
-                </th>
-            </tr>
-            @foreach (CoinChangeDTO change in Model.resultChange)
-            {
+        <h4>Change Coins</h4>
+        <div class="row">
+            <table id="gridTableChangeResult" class="table gridview" border="1">
                 <tr>
-                    <td>@change.coinValue</td>
-                    <td>@change.quantity</td>
-                    <td>@change.totalValue</td>
+                    <th>
+                        Coin Value
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total Coin Value
+                    </th>
                 </tr>
-            }
-        </table>
-    </div>
-    <div class="row">
-        <label>Total Sum: @Model.totalChange</label>
-        <label>Total Sum: @Model.totalCoins</label>
-    </div>
+                @foreach (CoinChangeDTO change in Model.resultChange)
+                {
+                    <tr>
+                        <td>@change.coinValue</td>
+                        <td>@change.quantity</td>
+                        <td>@change.totalValue</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <label>Total Sum Retuned: @Model.totalChange</label>
+            <label>Total Coins Returned: @Model.totalCoins</label>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <label>Could not perform transaction</label>
+        </div>
+    }
 </div>

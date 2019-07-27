@@ -9,12 +9,14 @@
 <div>
     <h2>Exchange</h2>
 
-    <div class="row">
-        <label class="control-label" for="saleValue">Change Required:</label>
-        <input type="number" id="changeRequired" />
-    </div>
+    <form action="/Cashier/ExchangeResult" id="processExchange" method="post">
+        <div class="row">
+            <label class="control-label" for="saleValue">Change Needed:</label>
+            <input type="number" id="changeRequired" name="totalChange" />
+        </div>
 
-    <div class="row">
-        <input type="submit" id="confirmExchange" value="Confirm Sale" />
-    </div>
+        <div class="row">
+            <input type="submit" id="confirmExchange" value="Process Exchange" />
+        </div>
+    </form>
 </div>

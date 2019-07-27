@@ -27,8 +27,8 @@ namespace CoinCashierDAL
 
                 /*
                  IF YOU ARE GETTING AN EXCEPTION HERE IT'S PROBABLY BECAUSE I COULDN'T CONFIGURE THE DATABASE PROPERLY
-                 IT IS THE FILE "CoinCashierDB.db" IN CoinCashierDAL
-                 THAT IS NOT BEING COPYED TO WHERE VISUAL STUDIO RUN THE APPLICATION (the "bin" folder)
+                 IT IS THE FILE "CoinCashierDB.db" IN CoinCashierDAL THAT IS NOT BEING COPYED TO WHERE VISUAL STUDIO RUN THE APPLICATION
+                 (the "WebSiteCoinCashier\bin" folder)
                  */
 
                 using (var reader = dbCommand.ExecuteReader())
