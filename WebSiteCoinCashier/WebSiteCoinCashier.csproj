@@ -195,6 +195,7 @@
     <Content Include="Views\Cashier\Deposit.cshtml" />
     <Content Include="Views\Cashier\Exchange.cshtml" />
     <Content Include="Views\Cashier\Balance.cshtml" />
+    <Content Include="Views\Cashier\ExchangeResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

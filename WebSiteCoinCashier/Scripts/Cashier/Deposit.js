@@ -17,6 +17,12 @@
                 if (result.resultCode == 0) {
                     alert("Funds Added!");
                 }
+                else if (result.resultCode == 1) {
+                    alert("Invalid Coin Value!");
+                }
+                else if (result.resultCode == 2) {
+                    alert("Invalid Quantity!");
+                }
             },
             error: function (error) {
                 

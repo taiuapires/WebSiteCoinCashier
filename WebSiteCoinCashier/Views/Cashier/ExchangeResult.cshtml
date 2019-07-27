@@ -1,0 +1,66 @@
+﻿@using CommonClasses.DTO
+
+@model CommonClasses.DTO.ExchangeResultDTO
+
+@{
+    ViewBag.Title = "ExchangeResult";
+}
+
+<div>
+    <h2>ExchangeResult</h2>
+
+    <div class="row">
+        <table id="gridTableBalanceResult" class="table gridview" border="1">
+            <tr>
+                <th>
+                    Coin Value
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Coin Value
+                </th>
+            </tr>
+            @foreach (CoinBalanceDTO coinBalance in Model.cashier.coinBalanceDTOs)
+            {
+                <tr>
+                    <td>@coinBalance.coinValue</td>
+                    <td>@coinBalance.quantity</td>
+                    <td>@coinBalance.totalValue</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="row">
+        <label>Total Sum: @Model.cashier.totalCoinValueSum</label>
+    </div>
+
+    <div class="row">
+        <table id="gridTableBalanceResult" class="table gridview" border="1">
+            <tr>
+                <th>
+                    Coin Value
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Coin Value
+                </th>
+            </tr>
+            @foreach (CoinChangeDTO change in Model.resultChange)
+            {
+                <tr>
+                    <td>@change.coinValue</td>
+                    <td>@change.quantity</td>
+                    <td>@change.totalValue</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="row">
+        <label>Total Sum: @Model.totalChange</label>
+        <label>Total Sum: @Model.totalCoins</label>
+    </div>
+</div>

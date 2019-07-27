@@ -39,7 +39,7 @@ namespace CoinCashierDAL
             return coinBalances;
         }
 
-        public static void UpdateCoinBalance(int idCashier, List<CoinBalanceDTO> newCashierCoinBalance)
+        public static void UpdateCashierBalance(int idCashier, List<CoinBalanceDTO> newCashierCoinBalance)
         {
             var dbConnection = SQLiteAccess.CreateConnection();
 
@@ -47,14 +47,26 @@ namespace CoinCashierDAL
 
             foreach (CoinBalanceDTO coinBalance in newCashierCoinBalance)
             {
-                Update(idCashier, coinBalance, dbConnection);
+                UpdateCashierBalance(idCashier, coinBalance, dbConnection);
             }
 
             dbConnection.Close();
             dbConnection.Dispose();
         }
 
-        public static void Update(int idCashier, CoinBalanceDTO coinBalance, SQLiteConnection dbConnection)
+        public static void UpdateCashierBalance(int idCashier, CoinBalanceDTO newCashierCoinBalance)
+        {
+            var dbConnection = SQLiteAccess.CreateConnection();
+
+            dbConnection.Open();
+
+            UpdateCashierBalance(idCashier, newCashierCoinBalance, dbConnection);
+
+            dbConnection.Close();
+            dbConnection.Dispose();
+        }
+
+        public static void UpdateCashierBalance(int idCashier, CoinBalanceDTO coinBalance, SQLiteConnection dbConnection)
         {
             if (coinBalance.idCoinBalance.HasValue == false)
             {

@@ -1,4 +1,5 @@
 ﻿using CommonClasses.DTO;
+using CommonClasses.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,21 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public JsonResult AddFunds(int coinValue, int quantity)
         {
+            if (coinValue <= 0)
+            {
+                return Json(new
+                {
+                    resultCode = 1 // Invalid Coin Value
+                });
+            }
+            else if (quantity <= 0)
+            {
+                return Json(new
+                {
+                    resultCode = 2 // Invalid Quantity
+                });
+            }
+
             CoinCashierBL.BalanceBL.AddFunds(1, coinValue, quantity);
 
             return Json(new
@@ -41,8 +57,14 @@ namespace WebApplication1.Controllers
         {
             return Json(new
             {
-                resultCode = 0 // no error
+                resultCode = 0, // no error
+                exchangeResult = new ExchangeResultDTO()
             });
+        }
+
+        public ActionResult ExchangeResult(ExchangeResultDTO exchangeResult)
+        {
+            return View(exchangeResult);
         }
 
         public ActionResult Withdraw()
@@ -52,14 +74,31 @@ namespace WebApplication1.Controllers
 
         public JsonResult WithdrawFunds(int coinValue, int quantity)
         {
+            int resultCode = 0; // no error
+
+            try
+            {
+                CoinCashierBL.BalanceBL.RemoveFunds(1, coinValue, quantity);
+            }
+            catch (InvalidCoinValue)
+            {
+                resultCode = 1;
+            }
+            catch (NotEnoughFunds)
+            {
+                resultCode = 2;
+            }
+
             return Json(new
             {
-                resultCode = 0 // no error
+                resultCode
             });
         }
 
         public JsonResult ResetCashier()
         {
+            CoinCashierBL.BalanceBL.ResetCashier(1);
+
             return Json(new
             {
                 resultCode = 0 // no error
