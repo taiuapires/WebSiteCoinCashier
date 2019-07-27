@@ -12,6 +12,8 @@
     @RenderSection("scripts", required: false)
 </head>
 <body>
+    <script src="~/Scripts/Shared/_Layout.js"></script>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -20,25 +22,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Coin Cashier", "Balance", "Cashier", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Balance", "Balance", "Cashier")</li>
                     <li>@Html.ActionLink("Deposit", "Deposit", "Cashier")</li>
                     <li>@Html.ActionLink("Withdraw", "Withdraw", "Cashier")</li>
                     <li>@Html.ActionLink("Exchange", "Exchange", "Cashier")</li>
                 </ul>
+                @if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    <div class="pull-right" style="padding-top:12px">
+                        <input type="submit" id="resetCashier" value="Reset Cashier" />
+                    </div>
+                }
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
     </div>
 
-    
+
 </body>
 </html>

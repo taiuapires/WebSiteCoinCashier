@@ -159,6 +159,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Shared\_Layout.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,6 +177,7 @@
     <Content Include="Views\Cashier\Withdraw.cshtml" />
     <Content Include="Views\Cashier\Deposit.cshtml" />
     <Content Include="Views\Cashier\Exchange.cshtml" />
+    <Content Include="Views\Cashier\Balance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -195,6 +197,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CoinCashierBL\CoinCashierBL.csproj">
+      <Project>{09a909b2-3385-471b-a7aa-4aa3b3e60f33}</Project>
+      <Name>CoinCashierBL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommonClasses\CommonClasses.csproj">
       <Project>{93625ace-5e44-48a1-9315-2a097e9c37e0}</Project>
       <Name>CommonClasses</Name>

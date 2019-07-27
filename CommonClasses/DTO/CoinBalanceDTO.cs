@@ -8,13 +8,13 @@ namespace CommonClasses.DTO
 {
     public class CoinBalanceDTO
     {
-        public decimal value { get; set; }
-        public int ammount { get; set; }
-        public decimal totalValue
+        public int coinValue { get; set; }
+        public int quantity { get; set; }
+        public int totalValue
         {
             get
             {
-                return value * ammount;
+                return coinValue * quantity;
             }
         }
     }

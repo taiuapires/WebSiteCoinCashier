@@ -1,22 +1,27 @@
 ﻿$(document).ready(function () {
-    alert("Deposit");
-
+    
     $(document).on("click", "#confirmDeposit", function (e) {
         e.preventDefault();
 
-        var form = {};
+        var form = {
+            coinValue: $("#coinValue").val(),
+            quantity: $("#quantity").val()
+        };
 
         $.ajax({
             cache: false,
             type: "POST",
-            url: "/Cashier/AddCoins",
+            url: "/Cashier/AddFunds",
             data: form,
-            success: function (retorno) {
-                
+            success: function (result) {
+                if (result.resultCode == 0) {
+                    alert("Funds Added!");
+                }
             },
-            error: function (e) {
+            error: function (error) {
                 
             }
         });
     });
+
 });

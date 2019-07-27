@@ -1,0 +1,38 @@
+﻿@using CommonClasses.DTO
+
+@model CommonClasses.DTO.CashierDTO
+
+@{
+    ViewBag.Title = "Balance";
+}
+
+<div>
+    <h2>Balance</h2>
+
+    <div class="row">
+        <table id="gridTableBalanceResultado" class="table gridview" border="1">
+            <tr>
+                <th>
+                    Coin Value
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Coin Value
+                </th>
+            </tr>
+            @foreach (CoinBalanceDTO coinBalance in Model.coinBalanceDTOs)
+            {
+                <tr>
+                    <td>@coinBalance.coinValue</td>
+                    <td>@coinBalance.quantity</td>
+                    <td>@coinBalance.totalValue</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="row">
+        <label>Total Sum: @Model.totalCoinValueSum</label>
+    </div>
+</div>

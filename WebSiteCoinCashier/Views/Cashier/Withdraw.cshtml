@@ -6,5 +6,18 @@
 
 <script src="~/Scripts/Cashier/Withdraw.js"></script>
 
-<h2>Withdraw</h2>
+<div>
+    <h2>Withdraw</h2>
 
+    <div class="row">
+        <label class="control-label" for="coinValue">Coin Value:</label>
+        <input type="number" id="coinValue" min="1" />
+    </div>
+    <div class="row">
+        <label class="control-label" for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" />
+    </div>
+    <div class="row">
+        <input type="submit" id="confirmWithdraw" value="Withdraw Funds" />
+    </div>
+</div>

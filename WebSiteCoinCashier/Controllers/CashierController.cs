@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonClasses.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,17 +9,24 @@ namespace WebApplication1.Controllers
 {
     public class CashierController : Controller
     {
+        public ActionResult Balance()
+        {
+            CashierDTO cashier = CoinCashierBL.BalanceBL.LoadBalance(1);
+
+            return View(cashier);
+        }
+
         public ActionResult Deposit()
         {
             return View();
         }
 
         [HttpPost]
-        public JsonResult AddCoins()
+        public JsonResult AddFunds(int coinValue, int quantity)
         {
             return Json(new
             {
-                data = "Hello World"
+                resultCode = 0 // no error
             });
         }
 
@@ -27,9 +35,33 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public JsonResult PerformExchange(int saleValue)
+        {
+            return Json(new
+            {
+                resultCode = 0 // no error
+            });
+        }
+
         public ActionResult Withdraw()
         {
             return View();
+        }
+
+        public JsonResult WithdrawFunds(int coinValue, int quantity)
+        {
+            return Json(new
+            {
+                resultCode = 0 // no error
+            });
+        }
+
+        public JsonResult ResetCashier()
+        {
+            return Json(new
+            {
+                resultCode = 0 // no error
+            });
         }
     }
 }

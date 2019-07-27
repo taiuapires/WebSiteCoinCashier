@@ -16,6 +16,18 @@ namespace CoinCashierDAL
                 idCashier = idCashier,
                 description = idCashier.ToString(),
                 coinBalanceDTOs = new List<CoinBalanceDTO>()
+                {
+                    new CoinBalanceDTO()
+                    {
+                        quantity = 10,
+                        coinValue = 50
+                    },
+                    new CoinBalanceDTO()
+                    {
+                        quantity = 7,
+                        coinValue = 13
+                    }
+                }
             };
         }
     }

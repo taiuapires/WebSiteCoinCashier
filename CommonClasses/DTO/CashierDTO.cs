@@ -11,7 +11,7 @@ namespace CommonClasses.DTO
         public int idCashier { get; set; }
         public string description { get; set; }
         public List<CoinBalanceDTO> coinBalanceDTOs { get; set; }
-        public decimal totalValueCoins
+        public int totalCoinValueSum
         {
             get
             {
@@ -21,7 +21,7 @@ namespace CommonClasses.DTO
                 }
                 else
                 {
-                    return decimal.Zero;
+                    return 0;
                 }
             }
         }
