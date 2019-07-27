@@ -53,13 +53,31 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public JsonResult ExchangeFunds(int saleValue)
+        public JsonResult ExchangeFunds(int totalChange)
         {
-            return Json(new
+            CashierDTO cashier = CoinCashierBL.BalanceBL.LoadBalance(1);
+
+            try
             {
-                resultCode = 0, // no error
-                exchangeResult = new ExchangeResultDTO()
-            });
+                List<CoinChangeDTO> coinChanges = CoinCashierBL.ExchangeBL.PerformSale(cashier, totalChange);
+
+                return Json(new
+                {
+                    resultCode = 0, // no error
+                    exchangeResult = new ExchangeResultDTO()
+                    {
+                        resultChange = coinChanges,
+                        cashier = cashier
+                    }
+                });
+            }
+            catch (CannotProcessExchange)
+            {
+                return Json(new
+                {
+                    resultCode = 1, // can't make change
+                });
+            }
         }
 
         public ActionResult ExchangeResult(ExchangeResultDTO exchangeResult)

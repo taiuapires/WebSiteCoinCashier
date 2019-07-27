@@ -4,13 +4,13 @@
         e.preventDefault();
 
         var form = {
-            saleValue: $("#saleValue").val()
+            totalChange: $("#changeRequired").val()
         };
 
         $.ajax({
             cache: false,
             type: "POST",
-            url: "/Cashier/PerformExchange",
+            url: "/Cashier/ExchangeFunds",
             data: form,
             success: function (result) {
                 if (result.resultCode == 0) {

@@ -19,7 +19,8 @@ namespace CoinCashierDAL
                 dbCommand.CommandText = @"
                     SELECT ID_COIN_BALANCE, COIN_VALUE, QUANTITY
                         FROM COIN_BALANCE
-                        WHERE ID_CASHIER = @ID_CASHIER";
+                        WHERE ID_CASHIER = @ID_CASHIER
+                        ORDER BY COIN_VALUE DESC";
                 dbCommand.Parameters.AddWithValue("@ID_CASHIER", idCashier);
 
                 using (var reader = dbCommand.ExecuteReader())

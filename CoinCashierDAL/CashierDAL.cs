@@ -25,6 +25,12 @@ namespace CoinCashierDAL
                         WHERE ID_CASHIER = @ID_CASHIER";
                 dbCommand.Parameters.AddWithValue("@ID_CASHIER", idCashier);
 
+                /*
+                 IF YOU ARE GETTING AN EXCEPTION HERE IT'S PROBABLY BECAUSE I COULDN'T CONFIGURE THE DATABASE PROPERLY
+                 IT IS THE FILE "CoinCashierDB.db" IN CoinCashierDAL
+                 THAT IS NOT BEING COPYED TO WHERE VISUAL STUDIO RUN THE APPLICATION (the "bin" folder)
+                 */
+
                 using (var reader = dbCommand.ExecuteReader())
                 {
                     if (reader.Read())
