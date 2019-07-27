@@ -11,24 +11,42 @@ namespace CoinCashierDAL
     {
         public static CashierDTO GetCashier(int idCashier)
         {
-            return new CashierDTO()
+            CashierDTO cashier = null;
+
+            var dbConnection = SQLiteAccess.CreateConnection();
+
+            dbConnection.Open();
+
+            using (var dbCommand = new System.Data.SQLite.SQLiteCommand(dbConnection))
             {
-                idCashier = idCashier,
-                description = idCashier.ToString(),
-                coinBalanceDTOs = new List<CoinBalanceDTO>()
+                dbCommand.CommandText = @"
+                    SELECT ID_CASHIER, DESCRIPTION
+                        FROM CASHIER
+                        WHERE ID_CASHIER = @ID_CASHIER";
+                dbCommand.Parameters.AddWithValue("@ID_CASHIER", idCashier);
+
+                using (var reader = dbCommand.ExecuteReader())
                 {
-                    new CoinBalanceDTO()
+                    if (reader.Read())
                     {
-                        quantity = 10,
-                        coinValue = 50
-                    },
-                    new CoinBalanceDTO()
-                    {
-                        quantity = 7,
-                        coinValue = 13
+                        cashier = new CashierDTO()
+                        {
+                            idCashier = Convert.ToInt32(reader["ID_CASHIER"]),
+                            description = reader["DESCRIPTION"].ToString()
+                        };
                     }
                 }
-            };
+            }
+
+            if (cashier != null)
+            {
+                cashier.coinBalanceDTOs = CoinBalanceDAL.GetCoinBalance(idCashier, dbConnection);
+            }
+
+            dbConnection.Close();
+            dbConnection.Dispose();
+
+            return cashier;
         }
     }
 }

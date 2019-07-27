@@ -8,6 +8,7 @@ namespace CommonClasses.DTO
 {
     public class CoinBalanceDTO
     {
+        public int? idCoinBalance { get; set; }
         public int coinValue { get; set; }
         public int quantity { get; set; }
         public int totalValue

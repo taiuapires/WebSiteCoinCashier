@@ -24,6 +24,8 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public JsonResult AddFunds(int coinValue, int quantity)
         {
+            CoinCashierBL.BalanceBL.AddFunds(1, coinValue, quantity);
+
             return Json(new
             {
                 resultCode = 0 // no error
@@ -35,7 +37,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public JsonResult PerformExchange(int saleValue)
+        public JsonResult ExchangeFunds(int saleValue)
         {
             return Json(new
             {
